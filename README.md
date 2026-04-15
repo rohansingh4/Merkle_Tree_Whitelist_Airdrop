@@ -1,8 +1,7 @@
 # Merkle Tree Whitelist Airdrop
 
-This is my Hardhat project for a Merkle whitelist airdrop on Base.
+Task
 
-The idea is simple:
 - keep only one Merkle root on-chain
 - generate proofs off-chain from a CSV
 - allow each whitelisted address to claim once
@@ -30,12 +29,19 @@ The idea is simple:
 
 ## Deployed contracts (Base mainnet)
 
-- AirdropToken: `0x4836ae13b84f00cffacd8d963347de9b4dcec920`
-- MerkleAirdrop: `0xa654b8141060c1ee9f26fa43836b1c746891e58e`
+- AirdropToken: `0xcc474a47ecb9d7c2e12e65f92a3cf9f8ed9b65a9`
+- MerkleAirdrop: `0x08396b37754ad254eb9d233dae30daeb0f4a8aae`
 
 BaseScan:
-- https://basescan.org/address/0x4836ae13b84f00cffacd8d963347de9b4dcec920#code
-- https://basescan.org/address/0xa654b8141060c1ee9f26fa43836b1c746891e58e#code
+
+- https://basescan.org/address/0xcc474a47ecb9d7c2e12e65f92a3cf9f8ed9b65a9#code
+- https://basescan.org/address/0x08396b37754ad254eb9d233dae30daeb0f4a8aae#code
+
+Deployment params used:
+
+- Merkle root: `0x9e496d76221ffd7db1146501263f9ea6933b1304c7f9f8e5c493d7898620edba`
+- Claim deadline: `1830211200`
+- Total allocation funded: `82800000000000000000` (82.8 tokens with 18 decimals)
 
 ## Setup
 
@@ -47,6 +53,7 @@ cp .env.example .env
 Update `.env` with your values.
 
 Main fields:
+
 - `PRIVATE_KEY`
 - `BASE_MAINNET_RPC_URL`
 - `CLAIM_DEADLINE_UNIX` (or `CLAIM_DEADLINE_ISO`)
@@ -75,8 +82,8 @@ If `BASESCAN_API_KEY` is present, verification is attempted in the deploy script
 ## Manual verify (if needed)
 
 ```bash
-npx hardhat verify --network base 0x4836ae13b84f00cffacd8d963347de9b4dcec920
-npx hardhat verify --network base 0xa654b8141060c1ee9f26fa43836b1c746891e58e 0x4836ae13b84f00cffacd8d963347de9b4dcec920 0xe7584d375e11dc4c708e3c2c188ed75c8c6fe773cb6f81ba56321195247417c5 1830211200
+npx hardhat verify --network base 0xcc474a47ecb9d7c2e12e65f92a3cf9f8ed9b65a9
+npx hardhat verify --network base 0x08396b37754ad254eb9d233dae30daeb0f4a8aae 0xcc474a47ecb9d7c2e12e65f92a3cf9f8ed9b65a9 0x9e496d76221ffd7db1146501263f9ea6933b1304c7f9f8e5c493d7898620edba 1830211200
 ```
 
 ## Claim flow
